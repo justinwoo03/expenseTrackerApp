@@ -59,7 +59,7 @@ const DUMMY_EXPENSES = [
     id: "e10",
     description: "Pokemon Cards",
     amount: 125.39,
-    date: new Date("2014-03-31"),
+    date: new Date("2024-03-31"),
   },
 ];
 
@@ -73,24 +73,26 @@ export const ExpensesContext = createContext({
 function expensesReducer(state, action) {
   switch (action.type) {
     case "ADD":
-      const id = new Date.toString() + Math.random().toString();
+      const id = new Date().toString() + Math.random().toString();
 
       // return a new, deep-copied array
       return [{ ...action.payload, id: id }, ...state];
 
     case "UPDATE":
-      const updateableExpenseIndex = state.findIndex((expense) => expense.id === action.payload.id);
+      const updateableExpenseIndex = state.findIndex(
+        expense => expense.id === action.payload.id
+      );
       const updateableExpense = state[updateableExpenseIndex];
 
       // action.payload.data overwrites existing data in updateableExpense, but keep Id
-      const updatedItem = {...updateableExpense, ...action.payload.data};
+      const updatedItem = { ...updateableExpense, ...action.payload.data };
       const updatedExpenses = [...state];
       updatedExpenses[updateableExpenseIndex] = updatedItem;
-      
+
       return updatedExpenses;
 
     case "DELETE":
-        return state.filter((expense) => expense.id !== action.payload);
+      return state.filter(expense => expense.id !== action.payload);
 
     default:
       return state;
@@ -112,6 +114,17 @@ export default function ExpensesContextProvider({ children }) {
     dispatch({ type: "DELETE", payload: id });
   }
 
+  const value = {
+    expenses: expensesState,
 
-  return <ExpensesContext.Provider>{children}</ExpensesContext.Provider>;
+    addExpense: addExpense,
+    deleteExpense: deleteExpense,
+    updateExpense: updateExpense,
+  };
+
+  return (
+    <ExpensesContext.Provider value={value}>
+      {children}
+    </ExpensesContext.Provider>
+  );
 }

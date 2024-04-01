@@ -58,6 +58,12 @@ const DUMMY_EXPENSES = [
         amount: 12.29,
         date: new Date('2015-02-11')
     },
+    {
+        id: 'e10',
+        description: 'Pokemon Cards',
+        amount: 125.39,
+        date: new Date('2014-03-31')
+    },
 ]
 
 export default function ExpensesOutput({ expenses, timePeriod }) {

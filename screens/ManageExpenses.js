@@ -7,7 +7,7 @@ import { ExpensesContext } from "../store/expenses-context";
 import ExpenseForm from "../components/manageExpense/ExpenseForm";
 import { deleteExpense, storeExpense, updateExpense } from "../util/http";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
-import ErrorOverlay from "../components/UI/errorOverlay";
+import ErrorOverlay from "../components/UI/ErrorOverlay";
 
 export default function ManageExpenses({ route, navigation }) {
   const [isSubmitting, setIsSubmitting] = useState(false);

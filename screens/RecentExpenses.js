@@ -5,7 +5,7 @@ import { ExpensesContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../util/date";
 import { fetchExpenses } from "../util/http";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
-import ErrorOverlay from "../components/UI/errorOverlay";
+import ErrorOverlay from "../components/UI/ErrorOverlay";
 
 export default function RecentExpenses() {
 

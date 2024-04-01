@@ -61,7 +61,7 @@ const DUMMY_EXPENSES = [
 ]
 
 export default function ExpensesOutput({ expenses, timePeriod }) {
-
+    // hello
   return (
     <View style={styles.container}>
         <ExpensesSummary expenses={DUMMY_EXPENSES} timePeriod={timePeriod}/>
